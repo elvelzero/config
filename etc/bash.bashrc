@@ -10,6 +10,7 @@
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
 ### THE ONLY THING U NEED ###
+### DELETE PS1=... TOO :)
 
 # source $XDG_CONFIG_HOME/bash/bashrc | default: [[ -f ~/.bashrc ]] && . ~/.bashrc
 # [[ -f ~/.config/bash/bashrc ]] && . ~/.config/bash/bashrc
