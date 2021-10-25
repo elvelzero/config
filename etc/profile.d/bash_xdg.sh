@@ -1,3 +1,6 @@
+# Setting bash to use $XDG_CONFIG_HOME/bash, defaults to ~/.config/bash
+confdir=${XDG_CONFIG_HOME:-$HOME/.config}/bash
+
 # Make bash follow the XDG_CONFIG_HOME convention
 _confdir=\${XDG_CONFIG_HOME:-\$HOME/.config}/bash
 if [ -d "$_confdir" ] &&  [ "\$0" = "bash" ]
