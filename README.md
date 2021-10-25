@@ -41,3 +41,11 @@ vim fugitive        : https://github.com/tpope/vim-fugitive \
 vim gitgutter       : https://github.com/airblade/vim-gitgutter
 
 nerdtree            : https://github.com/preservim/nerdtree
+
+# Xmobar example
+https://xmobar.org/ \
+https://raw.githubusercontent.com/jaor/xmobar/master/examples/xmobar.config
+
+# Xmonad example
+https://wiki.haskell.org/Xmonad/Config_archive \
+https://archives.haskell.org/code.haskell.org/xmonad/man/xmonad.hs
