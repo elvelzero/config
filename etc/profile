@@ -1,5 +1,7 @@
 
-### DELETE FROM HERE ###
+### DELETE FROM HERE
+## UPDATE: u dont need this anymore, move it to /etc/profile.d/...
+
 # /etc/profile
 
 # Set our umask
@@ -24,12 +26,14 @@ append_path '/usr/bin'
 # Force PATH to be environment
 export PATH
 
-### THE ONLY THING U NEED ###
+### THE ONLY THING U NEED
+## MOVING THIS LINE TO /etc/profile.d/bash_xdg.sh
 
 # Setting bash to use $XDG_CONFIG_HOME/bash, defaults to ~/.config/bash
-confdir=${XDG_CONFIG_HOME:-$HOME/.config}/bash
+# confdir=${XDG_CONFIG_HOME:-$HOME/.config}/bash
 
-### THE ONLY THING U NEED ###
+## MOVING THIS LINE TO /etc/profile.d/bash_xdg.sh
+### THE ONLY THING U NEED
 
 # Load profiles from /etc/profile.d
 if test -d /etc/profile.d/; then
@@ -58,4 +62,5 @@ unset TERMCAP
 # Man is much better than us at figuring this out
 unset MANPATH
 
-### DELETE TILL HERE ###
+### DELETE TILL HERE
+## UPDATE: u dont need this anymore, move it to /etc/profile.d/...
