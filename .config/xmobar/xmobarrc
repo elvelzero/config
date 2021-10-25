@@ -25,7 +25,13 @@ Config { font = "xft: Baekmuk Batang Bold Italic:size=10, Fira Code:size=10, Cas
                                       , "-i"	, "<fc=#006000></fc>"
                             ] 50
                        , Run Brightness ["-t", "Br: <percent>%", "--", "-D", "intel_backlight"] 60
-                       , Run Volume "default" "Master" ["-t", "<status>", "--", "--on", "Vol: <volume>%"] 10
+                       , Run Volume "default" "Master"
+                        [ "-t", "<status>", "--"
+                        , "--on", "Vol: <volume>%"
+                        , "--onc", "#859900"
+                        , "--off", "Vol: MUTED"
+                        , "--offc", "#dc322f"
+                        ] 10
                        , Run DiskU [("/", "Disk: <used>/<size>")]
                             ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
                             20
