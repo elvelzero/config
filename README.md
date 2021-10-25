@@ -2,6 +2,9 @@
 
 will be updated
 
+# /etc/hosts
+https://gist.github.com/mul14/eb05e88fcec5bb195cbb
+
 # Papirus nord icon
 https://github.com/Adapta-Projects/Papirus-Nord
 
