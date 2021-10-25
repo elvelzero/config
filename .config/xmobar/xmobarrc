@@ -24,7 +24,8 @@ Config { font = "xft: Baekmuk Batang Bold Italic:size=10, Fira Code:size=10, Cas
                                       -- charged status
                                       , "-i"	, "<fc=#006000></fc>"
                             ] 50
-                       , Run Brightness ["-t", "<bar>"] 60
+                       , Run Brightness ["-t", "Br: <percent>%", "--", "-D", "intel_backlight"] 60
+                       , Run Volume "default" "Master" ["-t", "<status>", "--", "--on", "Vol: <volume>%"] 10
                        , Run DiskU [("/", "<used>/<size>")]
                             ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
                             20
@@ -33,5 +34,5 @@ Config { font = "xft: Baekmuk Batang Bold Italic:size=10, Fira Code:size=10, Cas
                        ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | } <fc=#63c5ea>%date%</fc> { %battery% %bright% %disku%  %cpu%"
+        , template = "%StdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %disku% %default:Master% %bright% %battery% "
         }
