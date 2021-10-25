@@ -1,0 +1,88 @@
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_DATA_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."vim/spell", 'p')
+set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p')
+
+set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p')
+set directory=$XDG_CACHE_HOME/vim/swap | call mkdir(&directory, 'p')
+set undodir=$XDG_CACHE_HOME/vim/undo | call mkdir(&undodir, 'p')
+
+if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
+
+syntax	on
+
+" packloadall
+
+" let g:airline_theme='deus'
+" change cursor between normal & insert mode
+" let &t_SI = "\e[6 q"
+" let &t_EI = "\e[2 q"
+
+" colorscheme	nord
+
+set     nocompatible
+" set     cursorline cursorcolumn
+" fuzzy finder n autocomplete menu
+set     path+=**
+set     wildmenu
+set     wildmode=longest,list,full
+" make backspace work
+set     backspace=indent,eol,start
+" clipboard
+set     clipboard=unnamed,unnamedplus
+" file format
+set     encoding=utf-8
+set     fileformat=unix
+" tab
+set     tabstop=4 
+set     softtabstop=4
+set     shiftwidth=4 
+set     expandtab 
+set     autoindent
+" highlight search
+set 	hlsearch
+set     incsearch
+" mouse
+set     mouse=a
+" number
+set		number relativenumber
+
+"ultisnips, youcompleteme
+let     g:UltiSnipsExpandTrigger="<tab>"
+let     g:UltiSnipsJumpForwardTrigger="<c-b>"
+let     g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let     g:ycm_key_list_select_completion = ['<Down>']
+"If what you want is inserting the ᐅ symbol when the completion menu is not visible, adding these lines to your vimrc should do the trick:
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "ᐅ"
+
+" make Alt key work :')
+execute "set <M-c>=\ec"     
+execute "set <M-d>=\ed"     
+execute "set <M-h>=\eh"     
+execute "set <M-l>=\el"     
+execute "set <M-n>=\en"     
+execute "set <M-t>=\et"     
+execute "set <M-v>=\ev"     
+" execute "set <M-w>=\ew"     
+
+" for latex, compile latex file (+preview when zathura open), open zathura to view compiled latex file
+nnoremap <silent> <M-c> :lcd %:p:h<CR> :! pdflatex %<CR><CR>
+nnoremap <silent> <M-v> :lcd %:p:h<CR> :! zathura $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
+
+" alias
+nnoremap <silent> <M-d> :lcd %:p:h<CR>
+nnoremap <silent> <M-n> :Texplore<CR>
+" tab alias
+nnoremap <silent> <C-t> :tabnew<CR>
+nnoremap <silent> <M-t> :tabclose<CR>
+nmap     <silent> <M-h> :tabp<CR>
+nmap     <silent> <M-l> :tabn<CR>
+
+" emmet
+" imap <M-w> <C-y>,
