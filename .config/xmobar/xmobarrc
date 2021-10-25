@@ -34,5 +34,5 @@ Config { font = "xft: Baekmuk Batang Bold Italic:size=10, Fira Code:size=10, Cas
                        ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %disku% %default:Master% %bright% %battery% "
+        , template = "%StdinReader% | } <fc=#63c5ea>%date%</fc> { %memory% %cpu% %disku% %default:Master% %bright% %battery% "
         }
