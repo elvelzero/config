@@ -1,0 +1,35 @@
+# zathurarc
+
+set default-bg 		            "#161821e6"
+set default-fg 		            "#d8dee9"
+
+set statusbar-bg 	            "#d8dee9"
+set statusbar-fg 	            "#161821"
+
+set highlight-color             "#63c5ea"
+set highlight-fg	            "#eceff4"
+set highlight-active-color      "#7acbea"
+
+set inputbar-bg                 "#161821"
+set inputbar-fg                 "#eceff4"
+
+set notification-bg             "#161821"
+set notification-fg             "#eceff4"
+
+set notification-error-bg       "#161821"
+set notification-error-fg       "#bf616a"
+
+set notification-warning-bg     "#161821"
+set notification-warning-fg     "#ebcb8b"
+
+set completion-bg               "#161821"
+set completion-fg               "#fa946e"
+
+set completion-highlight-bg     "#161821"
+set completion-highlight-fg     "#2be491"
+
+set recolor-lightcolor          "#161821"
+set recolor-darkcolor           "#ECEFF4"
+
+set recolor                     "false"
+set recolor-keephue             "false"
