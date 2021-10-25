@@ -2,12 +2,16 @@
 
 will be updated
 
-# Spacefm trash plugins
-https://giters.com/IgnorantGuru/spacefm/issues/760 \
-https://download.salixos.org/x86_64/14.0/source/xap/corbeille-spacefm-en/
-
 # Papirus nord icon
 https://github.com/Adapta-Projects/Papirus-Nord
+
+# Spacefm plugins
+## ALL SpaceFM Plugins
+https://github.com/IgnorantGuru/spacefm/wiki/plugins
+
+## Trash plugins
+https://giters.com/IgnorantGuru/spacefm/issues/760 \
+https://download.salixos.org/x86_64/14.0/source/xap/corbeille-spacefm-en/
 
 # Vim plugins
 colorizer           : https://github.com/lilydjwg/colorizer
