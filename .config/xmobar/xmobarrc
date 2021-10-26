@@ -29,7 +29,7 @@ Config { font = "xft: Baekmuk Batang:style=bold italic:size=11, Fira Code:size=1
                         [ "-t", "<status>", "--"
                         , "--on", "\xfa7d <volume>%"
                         , "--onc", "#eceff4"
-                        , "--off", "\xfa80"
+                        , "--off", "\xfa80 Mute"
                         , "--offc", "#eceff4"
                         ] 10
                        , Run DiskU [("/", "\xf7c9 <used>/<size> ]")]
