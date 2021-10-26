@@ -22,7 +22,7 @@ Config { font = "xft: Baekmuk Batang:style=bold italic:size=11, Fira Code:size=1
                                       -- AC "on" status
                                       , "-O"	, "<left>% \xe315"
                                       -- charged status
-                                      , "-i"	, "\xf12a"
+                                      , "-i"	, "\xf00c"
                             ] 50
                        , Run Brightness ["-t", "\xf5df <percent>%", "--", "-D", "intel_backlight"] 60
                        , Run Volume "default" "Master"
