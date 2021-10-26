@@ -14,6 +14,7 @@ import XMonad.Layout.SubLayouts
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 
 -- Util
 import XMonad.Util.Run
@@ -148,6 +149,23 @@ myLogHook   = dynamicLogWithPP $ xmobarPP
                 , ppOrder   = \(ws:l:_:_) -> [ws,l]
                 }
 
+-- My manage hook
+myManageHook = composeAll
+    [ 
+      className =? "confirm"         --> doFloat
+    , className =? "file_progress"   --> doFloat
+    , className =? "dialog"          --> doFloat
+    , className =? "download"        --> doFloat
+    , className =? "error"           --> doFloat
+    , className =? "notification"    --> doFloat
+    , className =? "splash"          --> doFloat
+    , className =? "toolbar"         --> doFloat
+
+    , className =? "Gimp"           --> doFloat
+    , title =? "Oracle VM VirtualBox Manager"  --> doFloat
+    , isFullscreen -->  doFullFloat
+    ]
+
 -- My Config
 myConfig    = def
                 { 
@@ -162,6 +180,7 @@ myConfig    = def
                 --Hook
                 , layoutHook        = myLayout
                 , logHook           = myLogHook
+                , manageHook        = myManageHook
 
                 --Workspace
                 , workspaces        = myWorkspaces
