@@ -4,31 +4,19 @@ Config { font = "xft: Baekmuk Batang:style=bold italic:size=11, Fira Code:size=1
         , bgColor = "#161821"
         , fgColor = "#eceff4"
         , position = TopW L 100
-        , commands = [ Run Cpu ["-t","[ \xf2db <total>%","-L","3","-H","50","--high","red"] 10
+        , commands = [ 
+                       -- , Run Swap [] 10
+                       -- , Run Com "uname" ["-s","-r"] "" 36000
+                       -- , Run Network "enp0s20u3" ["-t","<rx>KB|<tx>KB","-L","0","-H","32",
+                       --                     "--normal","green","--high","red"] 10
+                         Run UnsafeStdinReader
+                       , Run Date "%a, %b %_d - %H:%M:%S" "date" 10  
+                       , Run Cpu ["-t","[ \xf2db <total>%","-L","3","-H","50","--high","red"] 10
                        , Run Memory ["-t","\xf85a <usedratio>%"] 10
-                       , Run Swap [] 10
-                       , Run Com "uname" ["-s","-r"] "" 36000
-                       -- , Run Network "wlp3s0" ["-L","0","-H","32",
-                       --                    "--normal","green","--high","red"] 10
-                       -- Wireless
+                       , Run DiskU [("/", "\xf7c9 <used>/<size> ]")]
+                            ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
+                            20
                        , Run Wireless "wlp3s0" [ "-t", "\xfaa8 <essid>" ] 10
-                       --, Run Battery
-                       , Run Battery        [ "--template" , "\xf240 <acstatus>"
-                            , "--Low"      , "30"        -- units: %
-                            , "--High"     , "80"        -- units: %
-                            , "--low"      , "darkred"
-                            -- , "--normal"   , "darkorange"
-                            -- , "--high"     , "#1496fa"
-
-                            , "--" -- battery specific options
-                                      -- discharging status
-                                      , "-o"	, "<left>% (<timeleft>)"
-                                      -- AC "on" status
-                                      , "-O"	, "<left>% \xe315"
-                                      -- charged status
-                                      , "-i"	, "\xf00c"
-                            ] 50
-                       , Run Brightness ["-t", "\xf5df <percent>%", "--", "-D", "intel_backlight"] 60
                        , Run Volume "default" "Master"
                         [ "-t", "<status>", "--"
                         , "--on", "\xfa7d <volume>%"
@@ -36,14 +24,26 @@ Config { font = "xft: Baekmuk Batang:style=bold italic:size=11, Fira Code:size=1
                         , "--off", "\xfa80 Mute"
                         , "--offc", "#eceff4"
                         ] 10
-                       , Run DiskU [("/", "\xf7c9 <used>/<size> ]")]
-                            ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
-                            20
-                       , Run Date "%a, %b %_d - %H:%M:%S" "date" 10
-                       -- , Run StdinReader
-                       , Run UnsafeStdinReader
+                       , Run Brightness ["-t", "\xf5df <percent>%", "--", "-D", "intel_backlight"] 60
+                       , Run Battery [ 
+                              "--template" , "\xf240 <acstatus>"
+                            , "--Low"      , "30"        -- units: %
+                            , "--High"     , "80"        -- units: %
+                            , "--low"      , "darkred"
+                            -- , "--normal"   , "darkorange"
+                            -- , "--high"     , "#1496fa"
+
+                            , "--" -- battery specific options
+                                   -- discharging status
+                              , "-o"	, "<left>% (<timeleft>)"
+                                   -- AC "on" status
+                              , "-O"	, "<left>% \xe315"
+                                   -- charged status
+                              , "-i"	, "\xf00c"
+                            ] 50
                        ]
         , sepChar = "%"
         , alignSep = "}{"
+        -- , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %memory% %disku% %wlp3s0wi% %enp0s20u3% %default:Master% %bright% %battery%"
         , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %memory% %disku% %wlp3s0wi% %default:Master% %bright% %battery%"
         }
