@@ -23,7 +23,6 @@ import XMonad.Hooks.SetWMName
 
   -- Layouts
 import XMonad.Layout.Spiral
-import XMonad.Layout.Tabbed
 
   -- Layouts modifiers
 import XMonad.Layout.LayoutModifier
