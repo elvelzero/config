@@ -15,7 +15,7 @@ Config { font            = "xft:  Baekmuk Batang:style=bold italic:size=10,
        , hideOnStart  = False
        , allDesktops  = True
        , persistent   = True
-       , iconRoot     = ".xmonad/xpm/"  -- default: "."
+       , iconRoot     = ".config/xmonad/icons/"  -- default: "."
        , commands = [
                          Run UnsafeStdinReader
                        , Run Date "<fn=1>%a, %b %_d - %H:%M</fn>" "date" 10  
@@ -52,8 +52,5 @@ Config { font            = "xft:  Baekmuk Batang:style=bold italic:size=10,
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       -- , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %memory% %disku% %wlp3s0wi% %default:Master% %bright% %battery%"
-     --   , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { | %wlp3s0wi% | %default:Master% | %bright% | %battery% |"
-       , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %wlp3s0wi% %default:Master% %bright% %battery% "
-       -- , template = "%UnsafeStdinReader% | } { %wlp3s0wi% %default:Master% %bright% %battery% <fc=#63c5ea>%date%</fc>"
+       , template = " <icon=arch.xpm/> %UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %wlp3s0wi% %default:Master% %bright% %battery% "
        }
