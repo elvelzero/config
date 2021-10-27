@@ -22,23 +22,23 @@ https://www.youtube.com/watch?v=3fkTCkc687s&t=324s \
 https://shapeshed.com/vim-packages/
 
 # Vim plugins
-colorizer           : https://github.com/lilydjwg/colorizer
+colorizer           : https://github.com/lilydjwg/colorizer (used)
 
-vim airline         : https://github.com/vim-airline/vim-airline \
-vim airline theme   : https://github.com/vim-airline/vim-airline-themes
+vim airline         : https://github.com/vim-airline/vim-airline (used) \
+vim airline theme   : https://github.com/vim-airline/vim-airline-themes (used)
 
-syntastic           : https://github.com/vim-syntastic/syntastic
+syntastic           : https://github.com/vim-syntastic/syntastic (used)
 
-vim auto pairs      : https://github.com/jiangmiao/auto-pairs \
-vim closetag        : https://github.com/alvan/vim-closetag \
+vim auto pairs      : https://github.com/jiangmiao/auto-pairs (used) \
+vim closetag        : https://github.com/alvan/vim-closetag (used) \
 vim commentary      : https://github.com/tpope/vim-commentary \
-vim surround        : https://github.com/tpope/vim-surround
+vim surround        : https://github.com/tpope/vim-surround (used)
 
 vim emmet           : https://github.com/mattn/emmet-vim
 
-vim snippet         : https://github.com/honza/vim-snippets \
-vim tex             : https://github.com/lervag/vimtex \
-vim ulti snips      : https://github.com/SirVer/ultisnips
+vim snippet         : https://github.com/honza/vim-snippets (used) \
+vim tex             : https://github.com/lervag/vimtex (used) \
+vim ulti snips      : https://github.com/SirVer/ultisnips (used)
 
 you complete me     : https://github.com/ycm-core/YouCompleteMe
 
