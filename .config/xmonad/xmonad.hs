@@ -21,6 +21,10 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 
+  -- Layouts
+import XMonad.Layout.Spiral
+import XMonad.Layout.Tabbed
+
   -- Layouts modifiers
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.MultiToggle
@@ -45,11 +49,12 @@ windowCount   = gets $ Just . show . length . W.integrate' . W.stack . W.workspa
 
 -- Start my vars
     -- font
-myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
+myFont = "xft:Baekmuk Batang:style=bold italic:size=10"
     -- modkey
 myModMask       = mod4Mask
     -- apps
-myLauncher      = "dmenu_run"
+-- myLauncher0     = "dmenu_run"
+myLauncher      = "rofi -show drun -config ~/.config/rofi/themes/solarized.rasi -display-drun \"Run: \" -drun-display-format \"{name}\" -show-icons"
 myTerminal      = "kitty"
 myFM            = "spacefm"
 myBrowser       = "google-chrome-stable"
@@ -166,6 +171,7 @@ tall        = renamed [Replace "tall"]
             $ Tall 1 (3/100) (1/2)
 
 mirrorTall  = renamed [Replace "mirrorTall"]
+            $ smartBorders
             $ mySpacing 7
             $ Mirror (Tall 1 (3/100) (1/2))
 
@@ -173,12 +179,18 @@ full        = renamed [Replace "tall"]
             $ smartBorders
             $ Full
 
+spirals     = renamed [Replace "spirals"]
+            $ smartBorders
+            $ mySpacing 7
+            $ spiral (6/7)
+
   -- Layout hook
 myLayoutHook = avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
                myDefaultLayout  = tall
                                 ||| mirrorTall
                                 ||| full 
+                                ||| spirals 
 
 --------------------------------------------------------------------------- HOOKS ---------------------------------------------------------------------------
   -- Startup hook
@@ -217,11 +229,11 @@ myLogHook h = dynamicLogWithPP $ xmobarPP
               , ppHidden          = xmobarColor "#eceff4" "" -- . wrap "<box type=Bottom width=2 mt=2 color=#63c5ea>" "</box>" -- . clickable -- Hidden workspaces
               , ppHiddenNoWindows = xmobarColor "#63c5ea" ""  -- . clickable                                                                  -- Hidden workspaces (no windows)
               , ppTitle           = xmobarColor "#b3afc2" "" . shorten 60                                                                     -- Title of active window
-              , ppSep             =  "<fc=#666666> <fn=1>|</fn> </fc>"                                                                        -- Separator character
-              , ppUrgent          = xmobarColor "#C45500" "" . wrap "!" "!"                                                                   -- Urgent workspace
+              , ppSep             =  " | "                                                                        -- Separator character
+              , ppUrgent          = xmobarColor "#FA946E" "" . wrap "!" "!"                                                                   -- Urgent workspace
               , ppExtras          = [windowCount]                                                                                             -- # of windows current workspace
               -- , ppOrder           = \(ws:l:t:ex) -> [ws,l]++ex++[t]                                                                           -- order of things in xmobar
-              , ppOrder           = \(ws:l:_:ex) -> [ws,l]++ex                                                                                -- order of things in xmobar
+              , ppOrder           = \(ws:l:t:ex) -> [ws]++ex                                                                                -- order of things in xmobar
               }
 
 --------------------------------------------------------------------------- MAIN ---------------------------------------------------------------------------
