@@ -1,39 +1,51 @@
----------------------------------------------------------------------------------------------------------------------------
--- Base
+-------------------------------------------------------------------------- IMPORT --------------------------------------------------------------------------
+  -- Base
 import XMonad
 import System.IO
+import System.Exit
+import qualified XMonad.StackSet as W
 
--- Layout modifier
+  -- Action
+import XMonad.Actions.CopyWindow
+import XMonad.Actions.CycleWS
+import XMonad.Actions.GridSelect
+
+  -- Data -- try to delete this
+import Data.Monoid
+import qualified Data.Map as M
+
+  -- Hooks -- try to delete things in ()
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
+
+  -- Layouts modifiers
 import XMonad.Layout.LayoutModifier
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
 import XMonad.Layout.SubLayouts
+import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
--- Hooks
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-
--- Util
-import XMonad.Util.Run
+ -- Utilities
 import XMonad.Util.EZConfig
+import XMonad.Util.Run
 import XMonad.Util.Ungrab
----------------------------------------------------------------------------------------------------------------------------
--- My Variables
-myBar           = xmobar
 
-myBorderWidth   :: Dimension
-myBorderWidth   = 2           -- Sets border width for windows
+--------------------------------------------------------------------------- VARS ---------------------------------------------------------------------------
+-- myEditor = myTerminal ++ " -e vim "    -- Sets vim as editor
+myBorderWidth = 2           -- Sets border width for windows
+myNormColor   = "#282c34"   -- Border color of normal windows
+myFocusColor  = "#46d9ff"   -- Border color of focused windows
+windowCount   = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
-myNormColor     :: String
-myNormColor     = "#282c34"   -- Border color of normal windows
-
-myFocusColor    :: String
-myFocusColor    = "#46d9ff"   -- Border color of focused windows
-
--- My vars
+-- Start my vars
+    -- font
+myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
     -- modkey
 myModMask       = mod4Mask
     -- apps
@@ -42,6 +54,8 @@ myTerminal      = "kitty"
 myFM            = "spacefm"
 myBrowser       = "google-chrome-stable"
 aBrowser        = "google-chrome-stable --incognito"
+
+myWifi          = "nmcli device wifi connect Cloud"
 
 myWallpaperSet  = "nitrogen"
 
@@ -69,16 +83,45 @@ volUp           = "amixer set Master 5%+ unmute"
 volDown         = "amixer set Master 5%- unmute"
 volMute         = "amixer set Master toggle"
 
--- Keybinds
-myKeys      :: [(String, X ())]
-myKeys      =
+------------------------------------------------------------------------- GRID SELECT -------------------------------------------------------------------------
+spawnSelected' :: [(String, String)] -> X ()
+spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
+    -- where conf = defaultGSConfig
+    where conf = def
+                   { gs_cellheight   = 40
+                   , gs_cellwidth    = 200
+                   , gs_cellpadding  = 6
+                   , gs_originFractX = 0.5
+                   , gs_originFractY = 0.5
+                   , gs_font         = myFont
+                   }
+
+myAppGrid = [   
+              --   ("Terminal"             , myTerminal)
+              -- , ("Browser"              , myBrowser)
+              -- , ("File Manager"         , myFM)
+              -- , ("Docs Editor"          , myDocEditor)
+              -- , ("Docs Viewer"          , myDocViewer)
+                ("Raster Image Editor"  , myRasterImgEdit)
+              , ("Vector Image Editor"  , myVectorImgEdit)
+              , ("Video Player"         , myVidPlayer)
+              , ("Video Recorder"       , myVidRecorder)
+              , ("Video Editor"         , myVidEditor)
+              , ("Android Studio"       , "android-studio")
+              , ("Intellij IDEA"        , "idea-ce")
+              , ("Visual Studio Code"   , "code")
+            ]
+------------------------------------------------------------------------- KEYBINDS -------------------------------------------------------------------------
+myKeys :: [(String, X ())]
+myKeys =
     [ 
       -- core apps
       ( "M-r"           , spawn myLauncher )
-    , ( "M-S-<Return>"  , spawn myTerminal )
+    , ( "M-S-r"         , spawnSelected' myAppGrid )
+    , ( "M-<Return>"    , spawn myTerminal )
     , ( "M-e"           , spawn myFM )
-    , ( "M-["           , spawn myBrowser )
-    , ( "M-]"           , spawn aBrowser )
+    , ( "M-b"           , spawn myBrowser )
+    , ( "M-S-b"         , spawn aBrowser )
       -- basic apps
     , ( "M-w"           , spawn myWallpaperSet )
     , ( "M-o"           , spawn myDocEditor )
@@ -92,6 +135,7 @@ myKeys      =
     , ( "M-S-s"         , spawn myLockScreen )
     , ( "M-p"           , unGrab *> spawn myScreenshot )
       -- utilities
+    , ( "M-n"           , spawn myWifi )
     , ( "M-m"           , spawn myNetworkMan )
     , ( "M-S-m"         , spawn myTaskMan )
       -- multimedia
@@ -102,13 +146,49 @@ myKeys      =
     , ( "C-<XF86AudioMute>"         , spawn brightSet )
     , ( "C-<XF86AudioLowerVolume>"  , spawn brightDown )
     , ( "C-<XF86AudioRaiseVolume>"  , spawn brightUp )
+      -- Workspace cycle
+    -- , ( "M-<Page_Up>"               , nextWS )
+    -- , ( "M-<Page_Down>"             , prevWS )
+    , ( "M-<Up>"               , nextWS )
+    , ( "M-<Down>"             , prevWS )
+    , ( "M-<Page_Up>"          , moveTo Next NonEmptyWS )
+    , ( "M-<Page_Down>"        , moveTo Prev NonEmptyWS )
+    , ( "M-S-<Page_Up>"        , moveTo Next EmptyWS )
+    , ( "M-S-<Page_Down>"      , moveTo Prev EmptyWS )
+      -- Copy windows
+    , ( "M-x"      , windows copyToAll )
+    , ( "M-S-x"    , killAllOtherCopies )
+      -- toogle fullscreen no border
+    , ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
     ]
 
--- Space around windows.
+  -- Mouse bind
+myMouse (XConfig {XMonad.modMask = modm}) = M.fromList $
+    [ -- mod-button1, Set the window to floating mode and move by dragging
+        ( (modm, button1), (\w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster))
+      --   mod-button2, Raise the window to the top of the stack
+      , ( (modm, button2), (\w -> focus w >> windows W.shiftMaster))
+      --   mod-button3, Set the window to floating mode and resize by dragging
+      , ( (modm, button3), (\w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster))
+      --   Workspaces cycles with mouse scrolls; ALT = mod1Mask, CTRL = controlMask, SHIFT = shiftMask
+      , ( (modm, button4)                 , (\w -> nextWS) )
+      , ( (modm, button5)                 , (\w -> prevWS) )
+      , ( (modm .|. shiftMask, button4)   , (\w -> moveTo Next NonEmptyWS) )
+      , ( (modm .|. shiftMask, button5)   , (\w -> moveTo Prev NonEmptyWS) )
+      , ( (modm .|. controlMask, button4) , (\w -> moveTo Next EmptyWS) )
+      , ( (modm .|. controlMask, button5) , (\w -> moveTo Prev EmptyWS) )
+    ]
+
+------------------------------------------------------------------------- WORKSPACE -------------------------------------------------------------------------
+  -- Space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
+  -- Workspace names
+-- myWorkspaces = ["나", "정", "모", "사", "지", "미", "다", "채", "쯔"]
+myWorkspaces = [" 나 ", " 정 ", " 모 ", " 사 ", " 지 ", " 미 ", " 다 ", " 채 ", " 쯔 "]
 
--- Defining Layout
+--------------------------------------------------------------------------- LAYOUT ---------------------------------------------------------------------------
+  -- Defining layouts
 tall        = renamed [Replace "tall"]
             $ smartBorders
             $ mySpacing 7
@@ -122,34 +202,20 @@ full        = renamed [Replace "tall"]
             $ smartBorders
             $ Full
 
--- My Layout   
-myLayout    = dLayout
-            where
-                dLayout     =   tall
-                            ||| mirrorTall
-                            ||| full 
+  -- Layout hook
+myLayoutHook = avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
+             where
+               myDefaultLayout  = tall
+                                ||| mirrorTall
+                                ||| full 
 
--- My WorkSpace
--- workspace name
--- Na = 나, Jeong = 정, Mo = 모, Sa = 사, Ji = 지, Mi = 미, Da = 다, Chae = 채, Tzu = 쯔
--- myWorkspaces = [" 1 나 ", " 2 정 ", " 3 모 ", " 4 사 ", " 5 지 ", " 6 미 ", " 7 다 ", " 8 채 ", " 9 쯔 "]
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
--- myWorkspaces = [" 나 ", " 정 ", " 모 ", " 사 ", " 지 ", " 미 ", " 다 ", " 채 ", " 쯔 "]
-myWorkspaces = [" \xf8a3 ", " \xf8a6 ", " \xf8a9 ", " \xf8ac ", " \xf8af ", " \xf8b2 ", " \xf8b5 ", " \xf8b8 ", " \xf8bb "]
+--------------------------------------------------------------------------- HOOKS ---------------------------------------------------------------------------
+  -- Startup hook
+myStartupHook :: X ()
+myStartupHook = do
+    setWMName "LG3D"
 
--- My logHook
-myLogHook   = dynamicLogWithPP $ xmobarPP 
-                {
-                -- ppOutput = hPutStrLn
-                ppCurrent = xmobarColor "#c792ea" "" . wrap "<box type=Bottom width=2 mb=2 color=#c792ea>" "</box>"
-                , ppVisible = xmobarColor "#c792ea" ""
-                , ppHidden  = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=2 mt=2 color=#82AAFF>" "</box>"
-                , ppHiddenNoWindows = xmobarColor "#82AAFF" ""
-                -- , ppTitle = xmobarColor "#b3afc2" "" . shorten 0
-                , ppOrder   = \(ws:l:_:_) -> [ws,l]
-                }
-
--- My manage hook
+  -- myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
     [ 
       className =? "confirm"         --> doFloat
@@ -160,34 +226,55 @@ myManageHook = composeAll
     , className =? "notification"    --> doFloat
     , className =? "splash"          --> doFloat
     , className =? "toolbar"         --> doFloat
+    -- , wmName    =? "Open File"       --> doFloat   
 
     , className =? "Gimp"           --> doFloat
     , title =? "Oracle VM VirtualBox Manager"  --> doFloat
     , isFullscreen -->  doFullFloat
     ]
 
--- My Config
-myConfig    = def
-                { 
-                -- Variables
-                  modMask           = myModMask
-                
-                -- Border
-                , borderWidth       = myBorderWidth
-                , normalBorderColor = myNormColor
-                , focusedBorderColor= myFocusColor
+  -- Log hook
+myLogHook h = dynamicLogWithPP $ xmobarPP
+              -- the following variables beginning with 'pp' are settings for xmobar.
+              { ppOutput          = hPutStrLn h
+              , ppCurrent         = xmobarColor "#eceff4" "" . wrap "<box type=Bottom width=2 mb=2 color=#63c5ea>" "</box>"                   -- Current workspace
+              , ppVisible         = xmobarColor "#eceff4" "" -- . clickable                                                                   -- Visible but not current workspace
+              , ppHidden          = xmobarColor "#eceff4" "" -- . wrap "<box type=Bottom width=2 mt=2 color=#63c5ea>" "</box>" -- . clickable -- Hidden workspaces
+              , ppHiddenNoWindows = xmobarColor "#63c5ea" ""  -- . clickable                                                                  -- Hidden workspaces (no windows)
+              , ppTitle           = xmobarColor "#b3afc2" "" . shorten 60                                                                     -- Title of active window
+              , ppSep             =  "<fc=#666666> <fn=1>|</fn> </fc>"                                                                        -- Separator character
+              , ppUrgent          = xmobarColor "#C45500" "" . wrap "!" "!"                                                                   -- Urgent workspace
+              , ppExtras          = [windowCount]                                                                                             -- # of windows current workspace
+              -- , ppOrder           = \(ws:l:t:ex) -> [ws,l]++ex++[t]                                                                           -- order of things in xmobar
+              , ppOrder           = \(ws:l:_:ex) -> [ws,l]++ex                                                                                -- order of things in xmobar
+              }
 
-                --Hook
-                , layoutHook        = myLayout
-                , logHook           = myLogHook
-                , manageHook        = myManageHook
-
-                --Workspace
-                , workspaces        = myWorkspaces
-                }
-              -- Keybinds  
-              `additionalKeysP`  myKeys
-
--- Main Fun
+--------------------------------------------------------------------------- MAIN ---------------------------------------------------------------------------
 main :: IO ()
-main = xmonad . ewmh =<< myBar myConfig
+main = do
+    xmproc <- spawnPipe "xmobar"
+    xmonad $ ewmh def
+        { 
+        -- simple stuff
+          modMask            = myModMask
+        , terminal           = myTerminal
+        , workspaces         = myWorkspaces
+        , borderWidth        = myBorderWidth
+        , normalBorderColor  = myNormColor
+        , focusedBorderColor = myFocusColor
+        -- hooks  
+        , manageHook         = myManageHook <+> manageDocks
+        , handleEventHook    = docksEventHook
+                               -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
+                               -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
+                               -- it adds a border around the window if screen does not have focus. So, my solution
+                               -- is to use a keybinding to toggle fullscreen noborders instead.  (M-<Space>)
+                               -- <+> fullscreenEventHook
+        , startupHook        = myStartupHook
+        , layoutHook         = myLayoutHook -- showWName' myShowWNameTheme $ myLayoutHook
+        , logHook            = myLogHook xmproc
+        -- keybinds
+        , mouseBindings      = myMouse
+        } 
+        `additionalKeysP`      myKeys
+------------------------------------------------------------------------------------------------------------------------------------------------------------
