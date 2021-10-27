@@ -29,7 +29,7 @@ vim airline theme   : https://github.com/vim-airline/vim-airline-themes
 
 syntastic           : https://github.com/vim-syntastic/syntastic
 
-vim auto pairshttps ://github.com/jiangmiao/auto-pairs \
+vim auto pairs      : https://github.com/jiangmiao/auto-pairs \
 vim closetag        : https://github.com/alvan/vim-closetag \
 vim commentary      : https://github.com/tpope/vim-commentary \
 vim surround        : https://github.com/tpope/vim-surround
