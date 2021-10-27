@@ -10,6 +10,7 @@ alias ls='ls --color=auto'
 alias ls='lsd'
 alias cat='bat'
 alias startx='startx "$XDG_CONFIG_HOME/X11/xinitrc"'
+alias unimatrix='unimatrix -f -s 98 -c blue -l aAcCegGkmnopPrRsSu'
 
 alias arduino-cli='arduino-cli --config-file $XDG_CONFIG_HOME/arduino15/arduino-cli.yaml'
 
