@@ -1,16 +1,24 @@
-Config { font = "xft: Baekmuk Batang:style=bold italic:size=11, Fira Code:size=10, Cascadiacode:style=semibold italic:size=10, mononoki Nerd Font Mono:size=14"
-        , borderColor = "#161821"
-        , border = TopB
-        , bgColor = "#161821"
-        , fgColor = "#eceff4"
-        , position = TopW L 100
-        , commands = [ 
-                       -- , Run Swap [] 10
-                       -- , Run Com "uname" ["-s","-r"] "" 36000
-                       -- , Run Network "enp0s20u3" ["-t","<rx>KB|<tx>KB","-L","0","-H","32",
-                       --                     "--normal","green","--high","red"] 10
+Config { font            = "xft:  Baekmuk Batang:style=bold italic:size=10, 
+                                , mononoki Nerd Font Mono:size=12"
+       , additionalFonts = [ "xft:  Cascadia Code:pixelsize=13:antialias=true:hinting=true:style=italic
+                                  , Fira Code:pixelsize=12"
+                           ]
+       , bgColor      = "#2e3440"
+       , fgColor      = "#eceff4"
+       -- Position TopSize and BottomSize take 3 arguments:
+       --   an alignment parameter (L/R/C) for Left, Right or Center.
+       --   an integer for the percentage width, so 100 would be 100%.
+       --   an integer for the minimum pixel height for xmobar, so 24 would force a height of at least 24 pixels.
+       --   NOTE: The height should be the same as the trayer (system tray) height.
+       , position       = TopSize L 100 24
+       , lowerOnStart = True
+       , hideOnStart  = False
+       , allDesktops  = True
+       , persistent   = True
+       , iconRoot     = ".xmonad/xpm/"  -- default: "."
+       , commands = [
                          Run UnsafeStdinReader
-                       , Run Date "%a, %b %_d - %H:%M:%S" "date" 10  
+                       , Run Date "<fn=1>%a, %b %_d - %H:%M</fn>" "date" 10  
                        , Run Cpu ["-t","[ \xf2db <total>%","-L","3","-H","50","--high","red"] 10
                        , Run Memory ["-t","\xf85a <usedratio>%"] 10
                        , Run DiskU [("/", "\xf7c9 <used>/<size> ]")]
@@ -27,7 +35,7 @@ Config { font = "xft: Baekmuk Batang:style=bold italic:size=11, Fira Code:size=1
                        , Run Brightness ["-t", "\xf5df <percent>%", "--", "-D", "intel_backlight"] 60
                        , Run Battery [ 
                               "--template" , "\xf240 <acstatus>"
-                            , "--Low"      , "30"        -- units: %
+                            , "--Low"      , "20"        -- units: %
                             , "--High"     , "80"        -- units: %
                             , "--low"      , "darkred"
                             -- , "--normal"   , "darkorange"
@@ -41,9 +49,11 @@ Config { font = "xft: Baekmuk Batang:style=bold italic:size=11, Fira Code:size=1
                                    -- charged status
                               , "-i"	, "\xf00c"
                             ] 50
-                       ]
-        , sepChar = "%"
-        , alignSep = "}{"
-        -- , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %memory% %disku% %wlp3s0wi% %enp0s20u3% %default:Master% %bright% %battery%"
-        , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %memory% %disku% %wlp3s0wi% %default:Master% %bright% %battery%"
-        }
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       -- , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %cpu% %memory% %disku% %wlp3s0wi% %default:Master% %bright% %battery%"
+     --   , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { | %wlp3s0wi% | %default:Master% | %bright% | %battery% |"
+       , template = "%UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %wlp3s0wi% %default:Master% %bright% %battery% "
+       -- , template = "%UnsafeStdinReader% | } { %wlp3s0wi% %default:Master% %bright% %battery% <fc=#63c5ea>%date%</fc>"
+       }
