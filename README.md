@@ -40,7 +40,7 @@ vim snippet         : https://github.com/honza/vim-snippets (used) \
 vim tex             : https://github.com/lervag/vimtex (used) \
 vim ulti snips      : https://github.com/SirVer/ultisnips (used)
 
-you complete me     : https://github.com/ycm-core/YouCompleteMe
+you complete me     : https://github.com/ycm-core/YouCompleteMe (used)
 
 vim multi cursors   : https://github.com/terryma/vim-multiple-cursors (deprecated, use vim-visual-multi instead) \
 vim visual multi    : https://github.com/mg979/vim-visual-multi (used)
@@ -49,6 +49,8 @@ vim fugitive        : https://github.com/tpope/vim-fugitive \
 vim gitgutter       : https://github.com/airblade/vim-gitgutter
 
 nerdtree            : https://github.com/preservim/nerdtree
+
+git clone https://github.com/lilydjwg/colorizer && git clone https://github.com/vim-airline/vim-airline && git clone https://github.com/vim-airline/vim-airline-themes && git clone https://github.com/mg979/vim-visual-multi && git clone https://github.com/vim-syntastic/syntastic && git clone https://github.com/jiangmiao/auto-pairs && git clone https://github.com/alvan/vim-closetag && git clone https://github.com/tpope/vim-surround && git clone https://github.com/honza/vim-snippets && git clone https://github.com/SirVer/ultisnips && git clone https://github.com/ycm-core/YouCompleteMe && git clone https://github.com/lervag/vimtex
 
 # Xmobar example
 https://xmobar.org/ \
