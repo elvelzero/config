@@ -31,7 +31,11 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.SubLayouts
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
- -- Utilities
+  -- Prompt
+import XMonad.Prompt
+import XMonad.Prompt.Man
+
+  -- Utilities
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.Ungrab
@@ -160,6 +164,8 @@ myKeys =
     , ( "M-S-x"    , killAllOtherCopies )
       -- toogle fullscreen no border
     , ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
+      -- prompt
+    , ( "C-<F1>" , manPrompt def )
     ]
 
   -- Mouse bind
@@ -228,7 +234,11 @@ myManageHook = composeAll
     , className =? "toolbar"         --> doFloat
     -- , wmName    =? "Open File"       --> doFloat   
 
-    , className =? "Gimp"           --> doFloat
+    , className =? "Gimp"               --> doCenterFloat <+> doShift ( myWorkspaces !! 7 )
+    , className =? "obs"                --> doShift ( myWorkspaces !! 8 )
+    , className =? "jetbrains-idea-ce"  --> doCenterFloat
+    , className =? "jetbrains-studio"   --> doCenterFloat
+    
     , title =? "Oracle VM VirtualBox Manager"  --> doFloat
     , isFullscreen -->  doFullFloat
     ]
