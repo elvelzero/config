@@ -1,7 +1,7 @@
-Config { font            = "xft:  Baekmuk Batang:style=bold italic:size=10, 
-                                , mononoki Nerd Font Mono:size=12"
+Config { font            = "xft:  Baekmuk Batang:antialias=true:hinting=true:style=bold italic:size=10, 
+                                , mononoki Nerd Font Mono:antialias=true:hinting=true:size=14"
        , additionalFonts = [ "xft:  Cascadia Code:pixelsize=13:antialias=true:hinting=true:style=italic
-                                  , Fira Code:pixelsize=12"
+                                  , Fira Code:antialias=true:hinting=true:pixelsize=12"
                            ]
        , bgColor      = "#2e3440"
        , fgColor      = "#eceff4"
@@ -10,7 +10,8 @@ Config { font            = "xft:  Baekmuk Batang:style=bold italic:size=10,
        --   an integer for the percentage width, so 100 would be 100%.
        --   an integer for the minimum pixel height for xmobar, so 24 would force a height of at least 24 pixels.
        --   NOTE: The height should be the same as the trayer (system tray) height.
-       , position       = TopSize L 100 24
+     --   , position = Static { xpos = 10 , ypos = 5, width = 1346, height = 20 }
+       , position = Static { xpos = 0 , ypos = 0, width = 1366, height = 22 }
        , lowerOnStart = True
        , hideOnStart  = False
        , allDesktops  = True
@@ -24,20 +25,20 @@ Config { font            = "xft:  Baekmuk Batang:style=bold italic:size=10,
                        , Run DiskU [("/", "\xf7c9 <used>/<size> ]")]
                             ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
                             20
-                       , Run Wireless "wlp3s0" [ "-t", "\xfaa8 <essid>" ] 10
+                       , Run Wireless "wlp3s0" [ "-t", "<fc=#63c5ea>\xfaa8</fc> <essid>" ] 10
                        , Run Volume "default" "Master"
                         [ "-t", "<status>", "--"
-                        , "--on", "\xfa7d <volume>%"
+                        , "--on", "<fc=#63c5ea>\xfa7d</fc> <volume>%"
                         , "--onc", "#eceff4"
                         , "--off", "\xfa80 Mute"
                         , "--offc", "#eceff4"
                         ] 10
-                       , Run Brightness ["-t", "\xf5df <percent>%", "--", "-D", "intel_backlight"] 60
+                       , Run Brightness ["-t", "<fc=#63c5ea>\xf5df</fc> <percent>%", "--", "-D", "intel_backlight"] 60
                        , Run Battery [ 
-                              "--template" , "\xf240 <acstatus>"
-                            , "--Low"      , "20"        -- units: %
+                              "--template" , "<fc=#63c5ea>\xf240</fc> <acstatus>"
+                            , "--Low"      , "25"        -- units: %
                             , "--High"     , "80"        -- units: %
-                            , "--low"      , "darkred"
+                            , "--low"      , "#FF5555"
                             -- , "--normal"   , "darkorange"
                             -- , "--high"     , "#1496fa"
 
