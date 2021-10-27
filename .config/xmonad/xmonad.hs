@@ -31,10 +31,6 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.SubLayouts
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
-  -- Prompt
-import XMonad.Prompt
-import XMonad.Prompt.Man
-
   -- Utilities
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
@@ -87,41 +83,12 @@ volUp           = "amixer set Master 5%+ unmute"
 volDown         = "amixer set Master 5%- unmute"
 volMute         = "amixer set Master toggle"
 
-------------------------------------------------------------------------- GRID SELECT -------------------------------------------------------------------------
-spawnSelected' :: [(String, String)] -> X ()
-spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
-    -- where conf = defaultGSConfig
-    where conf = def
-                   { gs_cellheight   = 40
-                   , gs_cellwidth    = 200
-                   , gs_cellpadding  = 6
-                   , gs_originFractX = 0.5
-                   , gs_originFractY = 0.5
-                   , gs_font         = myFont
-                   }
-
-myAppGrid = [   
-              --   ("Terminal"             , myTerminal)
-              -- , ("Browser"              , myBrowser)
-              -- , ("File Manager"         , myFM)
-              -- , ("Docs Editor"          , myDocEditor)
-              -- , ("Docs Viewer"          , myDocViewer)
-                ("Raster Image Editor"  , myRasterImgEdit)
-              , ("Vector Image Editor"  , myVectorImgEdit)
-              , ("Video Player"         , myVidPlayer)
-              , ("Video Recorder"       , myVidRecorder)
-              , ("Video Editor"         , myVidEditor)
-              , ("Android Studio"       , "android-studio")
-              , ("Intellij IDEA"        , "idea-ce")
-              , ("Visual Studio Code"   , "code")
-            ]
 ------------------------------------------------------------------------- KEYBINDS -------------------------------------------------------------------------
 myKeys :: [(String, X ())]
 myKeys =
     [ 
       -- core apps
       ( "M-r"           , spawn myLauncher )
-    , ( "M-S-r"         , spawnSelected' myAppGrid )
     , ( "M-<Return>"    , spawn myTerminal )
     , ( "M-e"           , spawn myFM )
     , ( "M-b"           , spawn myBrowser )
@@ -164,8 +131,6 @@ myKeys =
     , ( "M-S-x"    , killAllOtherCopies )
       -- toogle fullscreen no border
     , ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
-      -- prompt
-    , ( "C-<F1>" , manPrompt def )
     ]
 
   -- Mouse bind
