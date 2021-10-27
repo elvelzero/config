@@ -42,8 +42,8 @@ vim ulti snips      : https://github.com/SirVer/ultisnips (used)
 
 you complete me     : https://github.com/ycm-core/YouCompleteMe
 
-vim multi cursors   : https://github.com/terryma/vim-multiple-cursors \
-vim visual multi    : https://github.com/mg979/vim-visual-multi
+vim multi cursors   : https://github.com/terryma/vim-multiple-cursors (deprecated, use vim-visual-multi instead) \
+vim visual multi    : https://github.com/mg979/vim-visual-multi (used)
 
 vim fugitive        : https://github.com/tpope/vim-fugitive \
 vim gitgutter       : https://github.com/airblade/vim-gitgutter
