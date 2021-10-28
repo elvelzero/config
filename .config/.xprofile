@@ -1,0 +1,19 @@
+## If u use display manager instead of xorg xinit
+# Wallpaper
+nitrogen --restore &
+
+# Compositor
+picom &
+
+# Audio
+pulseaudio --start &
+
+# LxSession Polkit Agent
+lxpolkit &
+
+# Network Manager Applet
+nm-applet --no-agent &
+# nm-applet &
+
+# udiiskie (udiskie --no-automount --no-notify --tray --file-manager spacefm)
+udiskie -ANt -f spacefm &
