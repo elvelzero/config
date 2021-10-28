@@ -1,4 +1,5 @@
 ## If u use display manager instead of xorg xinit
+## placed in ~/
 # Wallpaper
 nitrogen --restore &
 
