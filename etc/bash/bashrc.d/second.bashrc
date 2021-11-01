@@ -5,11 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# source $XDG_CONFIG_HOME/bash/bashrc | default: [[ -f ~/.bashrc ]] && . ~/.bashrc
-# [[ -f ~/.config/bash/bashrc ]] && . ~/.config/bash/bashrc
-# [[ -f $HOME/.config/bash/bashrc ]] && . $HOME/.config/bash/bashrc
-[[ -f $XDG_CONFIG_HOME/bash/bashrc ]] && . $XDG_CONFIG_HOME/bash/bashrc
-
 # alias
 alias ls='ls --color=auto'
 alias ls='lsd'
