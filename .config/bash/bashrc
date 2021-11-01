@@ -27,3 +27,7 @@ export BAT_THEME="Nord"
 # sdkman
 export SDKMAN_DIR="$HOME/.local/bin/sdkman"
 [[ -s "$HOME/.local/bin/sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.local/bin/sdkman/bin/sdkman-init.sh"
+
+# JAVA_HOME
+# export JAVA_HOME="~/.local/bin/jdk-17.0.1"
+# export PATH="$JAVA_HOME/bin:$PATH"
