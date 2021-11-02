@@ -222,7 +222,7 @@ myStartupHook = do
     setWMName "LG3D"
 
   -- myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
-myManageHook = insertPosition Below Newer <+> manageDocks <+> composeAll
+myManageHook = composeAll
     [ 
       className =? "confirm"         --> doFloat
     , className =? "file_progress"   --> doFloat
@@ -241,11 +241,12 @@ myManageHook = insertPosition Below Newer <+> manageDocks <+> composeAll
     , className =? "PacketTracer"       --> doCenterFloat
     
     -- , className =? "VirtualBox Machine" --> doFloat
-    , className =? "VirtualBox" --> doFloat
+    , className =? "VirtualBox" --> doF W.swapUp
     , title =? "Oracle VM VirtualBox Manager"  --> doFloat
 
     , isFullscreen -->  doFullFloat
     ]
+    <+> insertPosition Below Newer <+> manageDocks 
 
   -- Log hook
 myLogHook h = dynamicLogWithPP $ xmobarPP
