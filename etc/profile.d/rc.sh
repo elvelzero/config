@@ -25,8 +25,8 @@ export PS1="\[\e[31m\] \[\e[000m\]\[\e[33m\]\W \[\e[000m\]\[\e[32m\]\\$ \[\e[
 export BAT_THEME="Nord"
 
 # sdkman
-export SDKMAN_DIR="$HOME/.local/bin/sdkman"
-[[ -s "$HOME/.local/bin/sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.local/bin/sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="$HOME/.local/bin/sdkman"
+# [[ -s "$HOME/.local/bin/sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.local/bin/sdkman/bin/sdkman-init.sh"
 
 # JAVA_HOME
 # export JAVA_HOME="~/.local/bin/jdk-17.0.1"
