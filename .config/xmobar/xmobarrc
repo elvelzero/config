@@ -53,5 +53,5 @@ Config { font            = "xft:  Baekmuk Batang:antialias=true:hinting=true:sty
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <icon=arch.xpm/> %UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { %wlp3s0wi% %default:Master% %bright% %battery% "
+       , template = " <icon=arch.xpm/> %UnsafeStdinReader% | } <fc=#63c5ea>%date%</fc> { <action=`kitty -e nmtui` button=1>%wlp3s0wi%</action> %default:Master% %bright% %battery% "
        }
