@@ -8,15 +8,14 @@ import qualified XMonad.StackSet as W
   -- Action
 import XMonad.Actions.CopyWindow
 import XMonad.Actions.CycleWS
-import XMonad.Actions.GridSelect
 
-  -- Data -- try to delete this
-import Data.Monoid
+  -- Data
 import qualified Data.Map as M
 
-  -- Hooks -- try to delete things in ()
+  -- Hooks
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
@@ -29,6 +28,7 @@ import XMonad.Layout.LayoutModifier
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Reflect
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
 import XMonad.Layout.SubLayouts
@@ -88,6 +88,7 @@ volDown         = "amixer set Master 5%- unmute"
 volMute         = "amixer set Master toggle"
 
 ------------------------------------------------------------------------- KEYBINDS -------------------------------------------------------------------------
+  -- Keyboard
 myKeys :: [(String, X ())]
 myKeys =
     [ 
@@ -137,7 +138,7 @@ myKeys =
     , ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
     ]
 
-  -- Mouse bind
+  -- Mouse
 myMouse (XConfig {XMonad.modMask = modm}) = M.fromList $
     [ -- mod-button1, Set the window to floating mode and move by dragging
         ( (modm, button1), (\w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster))
@@ -178,10 +179,16 @@ full        = renamed [Replace "tall"]
             $ smartBorders
             $ Full
 
-spirals     = renamed [Replace "spirals"]
-            $ smartBorders
-            $ mySpacing 7
-            $ spiral (6/7)
+-- spirals     = renamed [Replace "spirals"]
+--             $ smartBorders
+--             $ mySpacing 7
+--             $ spiral (6/7)
+
+-- rspirals    = renamed [Replace "rspirals"]
+--             $ smartBorders
+--             $ mySpacing 7
+--             $ reflectVert
+--             $ spiral (6/7)
 
   -- Layout hook
 myLayoutHook = avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
@@ -189,7 +196,8 @@ myLayoutHook = avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayo
                myDefaultLayout  = tall
                                 ||| mirrorTall
                                 ||| full 
-                                ||| spirals 
+                                -- ||| spirals 
+                                -- ||| rspirals 
 
 --------------------------------------------------------------------------- HOOKS ---------------------------------------------------------------------------
   -- Startup hook
@@ -198,7 +206,7 @@ myStartupHook = do
     setWMName "LG3D"
 
   -- myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
-myManageHook = composeAll
+myManageHook = insertPosition Below Newer <+> manageDocks <+> composeAll
     [ 
       className =? "confirm"         --> doFloat
     , className =? "file_progress"   --> doFloat
@@ -214,8 +222,12 @@ myManageHook = composeAll
     , className =? "obs"                --> doShift ( myWorkspaces !! 8 )
     , className =? "jetbrains-idea-ce"  --> doCenterFloat
     , className =? "jetbrains-studio"   --> doCenterFloat
+    , className =? "PacketTracer"       --> doCenterFloat
     
+    -- , className =? "VirtualBox Machine" --> doFloat
+    , className =? "VirtualBox" --> doFloat
     , title =? "Oracle VM VirtualBox Manager"  --> doFloat
+
     , isFullscreen -->  doFullFloat
     ]
 
@@ -234,6 +246,9 @@ myLogHook h = dynamicLogWithPP $ xmobarPP
               -- , ppOrder           = \(ws:l:t:ex) -> [ws,l]++ex++[t]                                                                           -- order of things in xmobar
               , ppOrder           = \(ws:l:t:ex) -> [ws]++ex                                                                                -- order of things in xmobar
               }
+  
+myHandleEventHook = docksEventHook <+> fullscreenEventHook
+                    -- docks <+> fullscreenEventHook
 
 --------------------------------------------------------------------------- MAIN ---------------------------------------------------------------------------
 main :: IO ()
@@ -245,22 +260,17 @@ main = do
           modMask            = myModMask
         , terminal           = myTerminal
         , workspaces         = myWorkspaces
+        -- border
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
         -- hooks  
-        , manageHook         = myManageHook <+> manageDocks
-        , handleEventHook    = docksEventHook
-                               -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
-                               -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
-                               -- it adds a border around the window if screen does not have focus. So, my solution
-                               -- is to use a keybinding to toggle fullscreen noborders instead.  (M-<Space>)
-                               -- <+> fullscreenEventHook
-        , startupHook        = myStartupHook
-        , layoutHook         = myLayoutHook -- showWName' myShowWNameTheme $ myLayoutHook
+        , manageHook         = myManageHook
+        , handleEventHook    = myHandleEventHook
+        , layoutHook         = myLayoutHook
         , logHook            = myLogHook xmproc
+        , startupHook        = myStartupHook
         -- keybinds
         , mouseBindings      = myMouse
-        } 
-        `additionalKeysP`      myKeys
+        } `additionalKeysP`    myKeys
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
