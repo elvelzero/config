@@ -133,10 +133,10 @@ myKeys =
     , ( "M-k"      , windows W.focusDown ) -- focus to next window
     , ( "M-l"      , windows W.focusDown ) -- focus to next window
       -- Window resizer
-    , ("M-C-h", sendMessage Shrink)
-    , ("M-C-l", sendMessage Expand)
-    , ("M-C-j", sendMessage MirrorShrink)
-    , ("M-C-k", sendMessage MirrorExpand)
+    , ("M-C-h", sendMessage Shrink)       -- resize window left
+    , ("M-C-l", sendMessage Expand)       -- resize window right
+    , ("M-C-j", sendMessage MirrorShrink) -- resize window down
+    , ("M-C-k", sendMessage MirrorExpand) -- resize window up
       -- Window swap
     , ( "M-S-h"      , windows W.focusMaster ) -- focus to master
     , ( "M-S-l"      , windows W.swapMaster ) -- swap focused window to master
