@@ -21,6 +21,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 
   -- Layouts
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spiral
 
   -- Layouts modifiers
@@ -58,8 +59,6 @@ myTerminal      = "kitty"
 myFM            = "spacefm"
 myBrowser       = "google-chrome-stable"
 aBrowser        = "google-chrome-stable --incognito"
-
-myWifi          = "nmcli device wifi connect Cloud"
 
 myWallpaperSet  = "nitrogen"
 
@@ -111,7 +110,6 @@ myKeys =
     , ( "M-S-s"         , spawn myLockScreen )
     , ( "M-p"           , unGrab *> spawn myScreenshot )
       -- utilities
-    , ( "M-n"           , spawn myWifi )
     , ( "M-m"           , spawn myNetworkMan )
     , ( "M-S-m"         , spawn myTaskMan )
       -- multimedia
@@ -123,14 +121,27 @@ myKeys =
     , ( "C-<XF86AudioLowerVolume>"  , spawn brightDown )
     , ( "C-<XF86AudioRaiseVolume>"  , spawn brightUp )
       -- Workspace cycle
-    -- , ( "M-<Page_Up>"               , nextWS )
-    -- , ( "M-<Page_Down>"             , prevWS )
     , ( "M-<Up>"               , nextWS )
     , ( "M-<Down>"             , prevWS )
     , ( "M-<Page_Up>"          , moveTo Next NonEmptyWS )
     , ( "M-<Page_Down>"        , moveTo Prev NonEmptyWS )
     , ( "M-S-<Page_Up>"        , moveTo Next EmptyWS )
     , ( "M-S-<Page_Down>"      , moveTo Prev EmptyWS )
+      -- Window cycle
+    , ( "M-h"      , windows W.focusUp ) -- focus to previous window
+    , ( "M-j"      , windows W.focusUp ) -- focus to previous window
+    , ( "M-k"      , windows W.focusDown ) -- focus to next window
+    , ( "M-l"      , windows W.focusDown ) -- focus to next window
+      -- Window resizer
+    , ("M-C-h", sendMessage Shrink)
+    , ("M-C-l", sendMessage Expand)
+    , ("M-C-j", sendMessage MirrorShrink)
+    , ("M-C-k", sendMessage MirrorExpand)
+      -- Window swap
+    , ( "M-S-h"      , windows W.focusMaster ) -- focus to master
+    , ( "M-S-l"      , windows W.swapMaster ) -- swap focused window to master
+    , ( "M-S-j"      , windows W.swapDown ) -- swap focused window with the next window
+    , ( "M-S-k"      , windows W.swapUp ) -- swap focused window with the previous window
       -- Copy windows
     , ( "M-x"      , windows copyToAll )
     , ( "M-S-x"    , killAllOtherCopies )
@@ -165,10 +176,15 @@ myWorkspaces = [" 나 ", " 정 ", " 모 ", " 사 ", " 지 ", " 미 ", " 다 ", "
 
 --------------------------------------------------------------------------- LAYOUT ---------------------------------------------------------------------------
   -- Defining layouts
-tall        = renamed [Replace "tall"]
+-- tall        = renamed [Replace "tall"]
+--             $ smartBorders
+--             $ mySpacing 7
+--             $ Tall 1 (3/100) (1/2)
+
+rszTall     = renamed [Replace "rszTile"]
             $ smartBorders
             $ mySpacing 7
-            $ Tall 1 (3/100) (1/2)
+            $ ResizableTall 1 (3/100) (1/2) []
 
 mirrorTall  = renamed [Replace "mirrorTall"]
             $ smartBorders
@@ -193,9 +209,9 @@ full        = renamed [Replace "tall"]
   -- Layout hook
 myLayoutHook = avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
-               myDefaultLayout  = tall
+               myDefaultLayout  = rszTall -- tall
                                 ||| mirrorTall
-                                ||| full 
+                                ||| full
                                 -- ||| spirals 
                                 -- ||| rspirals 
 
