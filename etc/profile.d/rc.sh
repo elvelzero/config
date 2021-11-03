@@ -23,11 +23,3 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 # PS1='[\u@\h \W]\$ '
 export PS1="\[\e[31m\] \[\e[000m\]\[\e[33m\]\W \[\e[000m\]\[\e[32m\]\\$ \[\e[000m\]\[\e[34m\]> \[\e[000m\]"
 export BAT_THEME="Nord"
-
-# sdkman
-# export SDKMAN_DIR="$HOME/.local/bin/sdkman"
-# [[ -s "$HOME/.local/bin/sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.local/bin/sdkman/bin/sdkman-init.sh"
-
-# JAVA_HOME
-# export JAVA_HOME="~/.local/bin/jdk-17.0.1"
-# export PATH="$JAVA_HOME/bin:$PATH"
