@@ -15,7 +15,7 @@ export XDG_CONFIG_DIRS="/etc/xdg"
 # ==== bash ====
 # export HISTFILE="$XDG_CONFIG_HOME"/bash/.bash_history
 # export HISTFILE="$HOME/.config/bash/.bash_history"
-export HISTFILE="$XDG_STATE_HOME"/bash/history
+export HISTFILE="$XDG_CONFIG_HOME"/bash/bash_history
 export LESSHISTFILE=-
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
