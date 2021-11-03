@@ -3,7 +3,6 @@
 #
 
 # source $XDG_CONFIG_HOME/bash/bashrc | default: [[ -f ~/.bashrc ]] && . ~/.bashrc
-# [[ -f $HOME/.config/bash/bashrc ]] && . $HOME/.config/bash/bashrc
 [[ -f $XDG_CONFIG_HOME/bash/bashrc ]] && . $XDG_CONFIG_HOME/bash/bashrc
 
 # alias
