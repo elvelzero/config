@@ -7,7 +7,6 @@ if [ -d "$_confdir" ] &&  [ "\$0" = "bash" ]
 then
     . "\$_confdir"/bash_profile
     . "\$_confdir"/bashrc
-    HISTFILE=\$_confdir/bash_history
 fi
 unset _confdir
 
