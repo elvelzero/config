@@ -1,1 +1,2 @@
-colorscheme nord                        " Set my color scheme
+syntax      on
+colorscheme nord
