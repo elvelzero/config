@@ -6,18 +6,18 @@ will be updated
 [/etc/hosts](https://gist.github.com/mul14/eb05e88fcec5bb195cbb)
 
 # Kvantum qt5 theme
-https://github.com/EliverLara/Nordic
+[EliverLara/Nordic](https://github.com/EliverLara/Nordic)
 
 # Papirus nord icon
-https://github.com/Adapta-Projects/Papirus-Nord
+[Adapta-Projects/Papirus-Nord](https://github.com/Adapta-Projects/Papirus-Nord)
 
 # Spacefm plugins
 ## ALL SpaceFM Plugins
-https://github.com/IgnorantGuru/spacefm/wiki/plugins
+[IgnorantGuru/spacefm/wiki/plugins](https://github.com/IgnorantGuru/spacefm/wiki/plugins)
 
 ## Trash plugins
-https://giters.com/IgnorantGuru/spacefm/issues/760 \
-http://download.salixos.org/x86_64/14.0/source/xap/corbeille-spacefm-en/
+[IgnorantGuru/spacefm/issues/760](https://giters.com/IgnorantGuru/spacefm/issues/760) \
+[corbeille-spacefm-en](http://download.salixos.org/x86_64/14.0/source/xap/corbeille-spacefm-en/)
 
 # Vim native plugins manager
 https://www.youtube.com/watch?v=XIxsD7l4zww&t=107s \
@@ -25,40 +25,35 @@ https://www.youtube.com/watch?v=3fkTCkc687s&t=324s \
 https://shapeshed.com/vim-packages/
 
 # Vim plugins
-colorizer           : https://github.com/lilydjwg/colorizer (used)
+[colorizer](https://github.com/lilydjwg/colorizer) (used)
 
-vim airline         : https://github.com/vim-airline/vim-airline (used) \
-vim airline theme   : https://github.com/vim-airline/vim-airline-themes (used)
+vim airline         : [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) (used) \
+vim-airline-themes  : [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) (used)
 
-syntastic           : https://github.com/vim-syntastic/syntastic (used)
+vim-syntastic       : [vim-syntastic/syntastic](https://github.com/vim-syntastic/syntastic) (used)
 
-vim auto pairs      : https://github.com/jiangmiao/auto-pairs (used) \
-vim closetag        : https://github.com/alvan/vim-closetag (used) \
-vim commentary      : https://github.com/tpope/vim-commentary \
-vim surround        : https://github.com/tpope/vim-surround (used)
+vim auto pairs      : [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs) (used) \
+vim closetag        : [alvan/vim-closetag](https://github.com/alvan/vim-closetag) (used) \
+vim commentary      : [tpope/vim-commentary](https://github.com/tpope/vim-commentary) \
+vim surround        : [tpope/vim-surround](https://github.com/tpope/vim-surround) (used)
 
-vim emmet           : https://github.com/mattn/emmet-vim
+vim emmet           : [mattn/emmet-vim](https://github.com/mattn/emmet-vim)
 
-vim snippet         : https://github.com/honza/vim-snippets (used) \
-vim tex             : https://github.com/lervag/vimtex (used) \
-vim ulti snips      : https://github.com/SirVer/ultisnips (used)
+vim snippet         : [honza/vim-snippets](https://github.com/honza/vim-snippets) (used) \
+vim tex             : [lervag/vimtex](https://github.com/lervag/vimtex) (used) \
+vim ulti snips      : [SirVer/ultisnips](https://github.com/SirVer/ultisnips) (used)
 
-you complete me     : https://github.com/ycm-core/YouCompleteMe (used)
+you complete me     : [ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) (used)
 
-vim multi cursors   : https://github.com/terryma/vim-multiple-cursors (deprecated, use vim-visual-multi instead) \
-vim visual multi    : https://github.com/mg979/vim-visual-multi (used)
+vim visual multi    : [mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) (used)
 
-vim fugitive        : https://github.com/tpope/vim-fugitive \
-vim gitgutter       : https://github.com/airblade/vim-gitgutter
+vim fugitive        : [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) \
+vim gitgutter       : [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 
-nerdtree            : https://github.com/preservim/nerdtree
+nerdtree            : [preservim/nerdtree](https://github.com/preservim/nerdtree)
 
-git clone https://github.com/lilydjwg/colorizer && git clone https://github.com/vim-airline/vim-airline && git clone https://github.com/vim-airline/vim-airline-themes && git clone https://github.com/mg979/vim-visual-multi && git clone https://github.com/vim-syntastic/syntastic && git clone https://github.com/jiangmiao/auto-pairs && git clone https://github.com/alvan/vim-closetag && git clone https://github.com/tpope/vim-surround && git clone https://github.com/honza/vim-snippets && git clone https://github.com/SirVer/ultisnips && git clone https://github.com/ycm-core/YouCompleteMe && git clone https://github.com/lervag/vimtex
+# [Xmobar example](https://xmobar.org/)
+[xmobar/master/examples](https://raw.githubusercontent.com/jaor/xmobar/master/examples/xmobar.config)
 
-# Xmobar example
-https://xmobar.org/ \
-https://raw.githubusercontent.com/jaor/xmobar/master/examples/xmobar.config
-
-# Xmonad example
-https://wiki.haskell.org/Xmonad/Config_archive \
-https://archives.haskell.org/code.haskell.org/xmonad/man/xmonad.hs
+# [Xmonad example](https://wiki.haskell.org/Xmonad/Config_archive)
+[xmonad/man/xmonad.hs](https://archives.haskell.org/code.haskell.org/xmonad/man/xmonad.hs)
