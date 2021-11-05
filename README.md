@@ -17,7 +17,7 @@ https://github.com/IgnorantGuru/spacefm/wiki/plugins
 
 ## Trash plugins
 https://giters.com/IgnorantGuru/spacefm/issues/760 \
-https://download.salixos.org/x86_64/14.0/source/xap/corbeille-spacefm-en/
+http://download.salixos.org/x86_64/14.0/source/xap/corbeille-spacefm-en/
 
 # Vim native plugins manager
 https://www.youtube.com/watch?v=XIxsD7l4zww&t=107s \
