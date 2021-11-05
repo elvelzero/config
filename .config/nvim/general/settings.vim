@@ -1,3 +1,5 @@
+let     g:mapleader = "\<Space>"        " set leader key
+
 syntax  enable                          " Enables syntax highlighing
 
 set     hidden                          " Required to keep multiple buffers open multiple buffers
@@ -17,9 +19,6 @@ set     expandtab                       " Converts tabs to spaces
 set     autoindent			            " Good auto indent
 set     smartindent                     " Makes indenting smart
 
-set     formatoptions-=cro              " Stop newline continution of comments
-set     conceallevel=0                  " So that I can see `` in markdown files
-
 set     mouse=a				            " Enable your mouse
 
 set     laststatus=0                    " Always display the status line
@@ -28,6 +27,8 @@ set     ruler              			    " Show the cursor position all the time
 set     pumheight=10                    " Makes popup menu smaller
 set     cmdheight=2                     " More space for displaying messages
 set     iskeyword+=-                    " treat dash separated words as a word text object"
+set     nowrap                          " Display long lines as just one line
+set     conceallevel=0                  " So that I can see `` in markdown files
 
 set     splitbelow                      " Horizontal splits will automatically be below
 set     splitright                      " Vertical splits will automatically be to the right
@@ -36,7 +37,13 @@ set     nobackup                        " This is recommended by coc
 set     nowritebackup                   " This is recommended by coc
 set     updatetime=300                  " Faster completion
 set     timeoutlen=500                  " By default timeoutlen is 1000 ms
+set     formatoptions-=cro              " Stop newline continution of comments
 
 let g:loaded_python_provider = 0        " Disable coc python2 provider
 let g:loaded_ruby_provider = 0          " Disable coc ruby provider
 let g:loaded_perl_provider = 0          " Disabel coc perl provider
+
+au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+
+" You can't stop me
+cmap w!! w !sudo tee %
