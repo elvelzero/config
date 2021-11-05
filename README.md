@@ -28,24 +28,22 @@ https://shapeshed.com/vim-packages/
 [lilydjwg/colorizer](https://github.com/lilydjwg/colorizer) (used)
 
 [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) (used) \
-[vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) (used)
-
-[vim-syntastic/syntastic](https://github.com/vim-syntastic/syntastic) (used)
+[vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) (used) \
+[mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) (used) \
 
 [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs) (used) \
 [alvan/vim-closetag](https://github.com/alvan/vim-closetag) (used) \
 [tpope/vim-commentary](https://github.com/tpope/vim-commentary) \
 [tpope/vim-surround](https://github.com/tpope/vim-surround) (used)
 
-[mattn/emmet-vim](https://github.com/mattn/emmet-vim)
+[vim-syntastic/syntastic](https://github.com/vim-syntastic/syntastic) (used)
 
+[mattn/emmet-vim](https://github.com/mattn/emmet-vim) \
+[SirVer/ultisnips](https://github.com/SirVer/ultisnips) (used) \
 [honza/vim-snippets](https://github.com/honza/vim-snippets) (used) \
 [lervag/vimtex](https://github.com/lervag/vimtex) (used) \
-[SirVer/ultisnips](https://github.com/SirVer/ultisnips) (used)
-
-[ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) (used)
-
-[mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) (used)
+[neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) (used) \
+[ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
 
 [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) \
 [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)
