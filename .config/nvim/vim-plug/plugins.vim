@@ -1,26 +1,21 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-    " Themes
-    Plug 'arcticicestudio/nord-vim'                     " Nord colorscheme
-    Plug 'vim-airline/vim-airline'                      " airline
-    Plug 'vim-airline/vim-airline-themes'               " airline themes
+    Plug 'lilydjwg/colorizer'
     
-    " Essesntial
-    Plug 'preservim/nerdtree'                           " Nerdtree
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}     " Stable version of coc
-    
-    " Auto completion
-    Plug 'jiangmiao/auto-pairs'                         " Auto pairs for '(' '[' '{'
-    Plug 'alvan/vim-closetag'                           " Auto closetag
-    Plug 'tpope/vim-surround'                           " Vim surround
+    " Auto pairs for '(' '[' '{'
+    Plug 'jiangmiao/auto-pairs'
 
-    Plug 'honza/vim-snippets'                           " Vim snippets
-    Plug 'lervag/vimtex'                                " Vim latex
-    Plug 'SirVer/ultisnips'                             " Ultisnips
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'vim-airline/vim-airline'
+"    Plug 'vim-airline/vim-airline-themes'
     
-    " Others utilities
-    Plug 'lilydjwg/colorizer'                           " Color highlighter
-    Plug 'mg979/vim-visual-multi'                       " Multi cuursor
-    Plug 'vim-syntastic/syntastic'                      " Syntastic
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'alvan/vim-closetag'
+    Plug 'tpope/vim-surround'
+
+"    Plug 'SirVer/ultisnips'
+"    Plug 'honza/vim-snippets'
+"    Plug 'lervag/vimtex'
+"    Plug 'neoclide/coc.nvim'
 
 call plug#end()
