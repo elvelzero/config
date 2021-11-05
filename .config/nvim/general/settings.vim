@@ -37,5 +37,6 @@ set     nowritebackup                   " This is recommended by coc
 set     updatetime=300                  " Faster completion
 set     timeoutlen=500                  " By default timeoutlen is 1000 ms
 
-let g:loaded_ruby_provider = 0          " Disable neovim ruby provider
-let g:loaded_perl_provider = 0          " Disabel neovim perl provider
+let g:loaded_python_provider = 0        " Disable coc python2 provider
+let g:loaded_ruby_provider = 0          " Disable coc ruby provider
+let g:loaded_perl_provider = 0          " Disabel coc perl provider
