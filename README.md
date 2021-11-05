@@ -29,7 +29,7 @@ https://shapeshed.com/vim-packages/
 
 [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) (used) \
 [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) (used) \
-[mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) (used) \
+[mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) (used)
 
 [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs) (used) \
 [alvan/vim-closetag](https://github.com/alvan/vim-closetag) (used) \
