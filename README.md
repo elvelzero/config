@@ -25,32 +25,32 @@ https://www.youtube.com/watch?v=3fkTCkc687s&t=324s \
 https://shapeshed.com/vim-packages/
 
 # Vim plugins
-[colorizer](https://github.com/lilydjwg/colorizer) (used)
+[lilydjwg/colorizer](https://github.com/lilydjwg/colorizer) (used)
 
-vim airline         : [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) (used) \
-vim-airline-themes  : [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) (used)
+[vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) (used) \
+[vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) (used)
 
-vim-syntastic       : [vim-syntastic/syntastic](https://github.com/vim-syntastic/syntastic) (used)
+[vim-syntastic/syntastic](https://github.com/vim-syntastic/syntastic) (used)
 
-vim auto pairs      : [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs) (used) \
-vim closetag        : [alvan/vim-closetag](https://github.com/alvan/vim-closetag) (used) \
-vim commentary      : [tpope/vim-commentary](https://github.com/tpope/vim-commentary) \
-vim surround        : [tpope/vim-surround](https://github.com/tpope/vim-surround) (used)
+[jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs) (used) \
+[alvan/vim-closetag](https://github.com/alvan/vim-closetag) (used) \
+[tpope/vim-commentary](https://github.com/tpope/vim-commentary) \
+[tpope/vim-surround](https://github.com/tpope/vim-surround) (used)
 
-vim emmet           : [mattn/emmet-vim](https://github.com/mattn/emmet-vim)
+[mattn/emmet-vim](https://github.com/mattn/emmet-vim)
 
-vim snippet         : [honza/vim-snippets](https://github.com/honza/vim-snippets) (used) \
-vim tex             : [lervag/vimtex](https://github.com/lervag/vimtex) (used) \
-vim ulti snips      : [SirVer/ultisnips](https://github.com/SirVer/ultisnips) (used)
+[honza/vim-snippets](https://github.com/honza/vim-snippets) (used) \
+[lervag/vimtex](https://github.com/lervag/vimtex) (used) \
+[SirVer/ultisnips](https://github.com/SirVer/ultisnips) (used)
 
-you complete me     : [ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) (used)
+[ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) (used)
 
-vim visual multi    : [mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) (used)
+[mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) (used)
 
-vim fugitive        : [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) \
-vim gitgutter       : [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+[tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) \
+[airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 
-nerdtree            : [preservim/nerdtree](https://github.com/preservim/nerdtree)
+[preservim/nerdtree](https://github.com/preservim/nerdtree)
 
 # [Xmobar example](https://xmobar.org/)
 [xmobar/master/examples](https://raw.githubusercontent.com/jaor/xmobar/master/examples/xmobar.config)
