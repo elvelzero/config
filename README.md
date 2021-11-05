@@ -3,7 +3,7 @@
 will be updated
 
 # /etc/hosts
-https://gist.github.com/mul14/eb05e88fcec5bb195cbb
+[/etc/hosts](https://gist.github.com/mul14/eb05e88fcec5bb195cbb)
 
 # Kvantum qt5 theme
 https://github.com/EliverLara/Nordic
