@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# u can add this to /etc/X11/Xsession or ~/.xinitrc
+USERXSESSION="$XDG_CACHE_HOME/X11/xsession"
+USERXSESSIONRC="$XDG_CACHE_HOME/X11/xsessionrc"
+ALTUSERXSESSION="$XDG_CACHE_HOME/X11/Xsession"
+ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
+
 xbacklight = 70
 xsetroot -cursor_name left_ptr
 lxsession &
